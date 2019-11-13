@@ -26,7 +26,7 @@ class LRUCache:
     def get(self, key):
         if key not in self.storage:
             return None
-            
+
         else:
             kvp = self.storage[key]
             self.list.move_to_end(kvp)
@@ -58,3 +58,14 @@ class LRUCache:
         self.length += 1
         self.list.add_to_tail((key,value))
         self.storage[key] = self.list.tail
+
+
+cache = LRUCache(3)
+cache.set("Item1",1)
+cache.set("Item1",2)
+cache.set("Item1",3)
+cache.set("Item2",6)
+cache.set("Item1",4)
+
+print(cache.get("Item1"))
+print(cache.get("Item2"))
